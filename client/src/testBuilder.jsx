@@ -17,6 +17,9 @@ class Test extends React.Component {
     this.setState({
      [key]: event.target.value,
     })
+    // console.log(this.state);
+  }
+  submit() {
     console.log(this.state);
   }
   render() {
@@ -34,6 +37,13 @@ class Test extends React.Component {
               </input>
             ))}
           </form>
+        </div>
+        <div className="row">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={this.submit.bind(this)}
+          >Submit</button>
         </div>
       </div>
     );
