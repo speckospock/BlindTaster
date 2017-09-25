@@ -1,5 +1,6 @@
 const express = require('express');
-const db = require('./db.js');
+const bodyParser = require('body-parser').json();
+const models = require('./db.js');
 
 const app = express();
 const port = 6161;
@@ -14,9 +15,18 @@ app.get('/test', (req, res) => {
   res.redirect('/');
 });
 
+app.use('/test', bodyParser);
+
+app.post('/test', (req, res) => {
+  console.log(req.body);
+});
+
 app.get('/test/:testId', (req, res) => {
-  res.send(req.params);
-})
+  models.Test.findOne({_id: req.params.testId})
+    .then((data) => res.send(data))
+    .catch((err) => res.send('something went wrong.'));
+  //res.send(req.params);
+});
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

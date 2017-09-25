@@ -44,5 +44,7 @@ let exampleGrid = new Grid({
 console.log(JSON.stringify(carnerosPinot));
 console.log(JSON.stringify(exampleGrid));
 
-module.exports.db = db;
+// carnerosPinot.save();
+
 module.exports.Test = Test;
+module.exports.Grid = Grid;

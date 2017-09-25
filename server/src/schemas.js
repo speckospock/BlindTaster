@@ -12,6 +12,7 @@ const testSchema = mongoose.Schema({
 });
 
 const gridSchema = mongoose.Schema({
+  name: {type: String, required: true},
   sight: {
     clarity: {type: Number, min: 0, max: 2}, //1-3 clear, hazy, tubid
     concentration: {type: Number, min: 0, max: 2}, //1-3 pale, medium, deep
