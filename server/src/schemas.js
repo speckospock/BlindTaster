@@ -94,7 +94,13 @@ const gridSchema = mongoose.Schema({
         balsamic: Boolean
       },
       white: {
-
+        floral: Boolean,
+        herbal: Boolean,
+        vegetal: Boolean,
+        botrytis: Boolean,
+        nutty: Boolean,
+        lees: Boolean,
+        creamy: Boolean
       }
     },
     earth: {
@@ -113,9 +119,9 @@ const gridSchema = mongoose.Schema({
     },
     wood: {
       present: Boolean,
-      old: Boolean,
-      large: Boolean,
-      french: Boolean
+      old: Boolean, //old/new
+      large: Boolean, //large/small
+      french: Boolean //French/American
     }
   },
   palate: {
@@ -127,8 +133,8 @@ const gridSchema = mongoose.Schema({
     },
   },
   conclusion: {
-    grape: String,
-    oldWorld: Boolean,
+    grape: String, //primary varietal
+    oldWorld: Boolean, //old or new world
     climate: Number, //cool, moderate, warm
     country: String,
     age: Number //1-3 years, 4-6 years, 7+ years

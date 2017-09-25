@@ -11,8 +11,6 @@ db.once('open', function() {
   console.log('connected to db!');
 });
 
-
-
 const Test = mongoose.model('Test', schemas.testSchema);
 
 let carnerosPinot = new Test({
