@@ -12,6 +12,7 @@ db.once('open', function() {
 });
 
 const Test = mongoose.model('Test', schemas.testSchema);
+const Grid = mongoose.model('Grid', schemas.gridSchema);
 
 let carnerosPinot = new Test({
   producer: 'Robert Sinskey Vineyards',
@@ -23,7 +24,25 @@ let carnerosPinot = new Test({
   blind: false
 });
 
+let exampleGrid = new Grid({
+  sight: {
+    clarity: 1,
+    concentration: 0,
+    rimVariation: false,
+  },
+  palate: {
+    fruit: {
+      red: {
+        black: false,
+        blue: true,
+        red: true
+      }
+    }
+  }
+});
+
 console.log(JSON.stringify(carnerosPinot));
+console.log(JSON.stringify(exampleGrid));
 
 module.exports.db = db;
 module.exports.Test = Test;
