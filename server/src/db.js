@@ -9,4 +9,14 @@ db.once('open', function() {
   console.log('connected to db!');
 });
 
+const testSchema = mongoose.Schema({
+  producer: String,
+  year: String,
+  varietal: String,
+  region: String,
+  blind: Boolean
+});
+
+const Test = mongoose.model('Test', testSchema);
+
 module.exports = db;
