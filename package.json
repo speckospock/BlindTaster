@@ -1,0 +1,29 @@
+{
+  "name": "blind-taster",
+  "version": "0.0.1",
+  "description": "A blind tasting app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/speckospock/hrsf82-mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/speckospock/hrsf82-mvp/issues"
+  },
+  "homepage": "https://github.com/speckospock/hrsf82-mvp#readme",
+  "dependencies": {
+    "express": "^4.15.5",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.13",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  }
+}
