@@ -28,6 +28,8 @@ app.post('/test', (req, res) => {
   res.send(newTest);
 });
 
+app.use('/test/:testId', bodyParser)
+
 app.get('/test/:testId', (req, res) => {
   models.Test.findOne({_id: req.params.testId})
     .then((data) => res.send(data))
@@ -35,7 +37,10 @@ app.get('/test/:testId', (req, res) => {
   //res.send(req.params);
 });
 
-
+app.post('/test/:testId', (req, res) => {
+  let newGrid = new models.Grid(req.body);
+  console.log(newGrid);
+})
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

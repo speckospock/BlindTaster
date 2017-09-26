@@ -13,6 +13,7 @@ class Test extends React.Component {
       'region': null,
       'type': 'red',
     }
+    this.link = '';
     this.stringInputs = ['name', 'producer', 'vintage', 'varietal', 'country', 'region'];
   }
   handleChange(event) {
@@ -34,8 +35,11 @@ class Test extends React.Component {
   submit() {
     //TODO: input validation
     if (this.state.type === 'red' || this.state.type === 'white') {
-      axios.post('http://localhost:6161/test', this.state);
+      axios.post('http://localhost:6161/test', this.state)
+        .then(res => this.link = `http:\/\/localhost:6161/test/${res.data._id}`)
+        .then(() => this.setState(this.state));
       console.log(this.state);
+      //`link: http:\/\/localhost:6161/test/${res.data._id}`
     } else {
       console.log('Type field is REQUIRED');
     }
@@ -69,6 +73,7 @@ class Test extends React.Component {
             className="btn btn-primary"
             onClick={this.submit.bind(this)}
           >Submit</button>
+          <a href={this.link}>{this.link.length ? 'Go to Test!': ''}</a>
         </div>
       </div>
     );

@@ -271,7 +271,8 @@ class Grid extends React.Component {
     });
   }
   post() {
-
+    axios.post(`http:\/\/localhost:6161/test/${this.props.id}`, this.state)
+      .then(res => console.log(res));
   }
   handleChange(event) {
     this.setState({
@@ -315,6 +316,11 @@ class Grid extends React.Component {
           options={this.options.conclusion}
           update={this.updateForm.bind(this, 'conclusion')}
         />
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={this.post.bind(this)}
+        >Submit</button>
       </div>
     );
   }
