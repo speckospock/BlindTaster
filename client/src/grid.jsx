@@ -1,6 +1,20 @@
 import React from 'react';
 import axios from 'axios';
 import Sight from './sight.jsx';
+import Nose from './nose.jsx';
+
+/*
+onClick={() => {
+  this.props.form.color.secondary[el] = !this.props.form.color.secondary[el];
+  console.log(this.props.form.color);
+}}
+
+onClick={() => {
+  this.props.form.color.primary = i;
+  console.log(this.props.form);
+  $("#dropdownPrimaryColor").text(`Primary Color: ${el}`);
+}}
+*/
 
 class Grid extends React.Component {
   constructor(props) {
@@ -211,6 +225,10 @@ class Grid extends React.Component {
           primary: ['water white', 'straw', 'yellow', 'gold'],
           secondary: [...Object.keys(this.state.sight.color.secondary.white)]
         }
+      },
+      nose: {
+        intensity: ['delicate', 'moderate', 'powerful'],
+        age: ['youthful', 'developing', 'vinous']
       }
     }
   }
@@ -232,6 +250,7 @@ class Grid extends React.Component {
         <h2>HIHIHIHIHI</h2>
         <Sight form={this.state.sight} options={this.options.sight}
         color={this.options.color} id={this.state.testId} />
+        <Nose form={this.state.nose} options={this.options.nose} />
       </div>
     );
   }

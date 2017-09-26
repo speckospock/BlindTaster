@@ -31,60 +31,90 @@ class Sight extends React.Component {
         <form>
         <div className="row">
           {Object.keys(this.props.options).map(option => (
-            <div className="col-3">
-              <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id={`dropdown${option}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {option}
-                </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  {this.props.options[option].map((el, i) => {
-                    console.log(el);
-                    return <button
-                      className='dropdown-item'
-                      type="button"
-                      onClick={() => {
-                        this.props.form[option] = i;
-                        $(`#dropdown${option}`).text(`${option}: ${el}`);
-                      }}>{el}</button>;
-                  })}
-                </div>
+            <div className="dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id={`dropdown${option}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {option}
+              </button>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {this.props.options[option].map((el, i) => {
+                  console.log(el);
+                  return <button
+                    className='dropdown-item'
+                    type="button"
+                    onClick={() => {
+                      this.props.form[option] = i;
+                      $(`#dropdown${option}`).text(`${option}: ${el}`);
+                    }}>{el}</button>;
+                })}
               </div>
             </div>
           ))}
         </div>
         <div className="row">
           {Object.keys(this.state.color).map(option => (
-            <div className="col-6">
-              <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id={`dropdown${option}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {option}
-                </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  {this.state.color[option].map((el, i) => {
-                    console.log(el);
-                    return <button
-                      className='dropdown-item'
-                      type="button"
-                      onClick={() => {
-                        if (option === 'primary') {
-                          this.props.form.color.primary = i;
-                          console.log(this.props.form);
-                          $(`#dropdown${option}`).text(`primary: ${el}`);
-                        } else if (option === 'secondary') {
-                          this.props.form.color.secondary[this.state.type][el] = !this.props.form.color.secondary[this.state.type][el];
-                          console.log(this.props.form.color.secondary[this.state.type])
-                          let selected = Object.keys(this.props.form.color.secondary[this.state.type])
-                            .filter(item => !!this.props.form.color.secondary[this.state.type][item])
-                            .join(', ');
-                          $(`#dropdown${option}`).text(`secondary: ${selected}`);
-                          console.log(this.props.form.color);
-                        }
-                      }}>{el}</button>;
-                  })}
-                </div>
+            <div className="dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id={`dropdown${option}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {option}
+              </button>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {this.state.color[option].map((el, i) => {
+                  console.log(el);
+                  return <button
+                    className='dropdown-item'
+                    type="button"
+                    onClick={() => {
+                      if (option === 'primary') {
+                        this.props.form.color.primary = i;
+                        console.log(this.props.form);
+                        $(`#dropdown${option}`).text(`primary: ${el}`);
+                      } else if (option === 'secondary') {
+                        this.props.form.color.secondary[this.state.type][el] = !this.props.form.color.secondary[this.state.type][el];
+                        console.log(this.props.form.color.secondary[this.state.type])
+                        let selected = Object.keys(this.props.form.color.secondary[this.state.type])
+                          .filter(item => !!this.props.form.color.secondary[this.state.type][item])
+                          .join(', ');
+                        $(`#dropdown${option}`).text(`secondary: ${selected}`);
+                        console.log(this.props.form.color);
+                      }
+                    }}>{el}</button>;
+                })}
               </div>
             </div>
           ))}
+        </div>
+        <div className="row">
+          <div className="col">
+            <button
+              className='btn btn-secondary'
+              type="button"
+              id="rimVariation"
+              onClick={() => {
+                this.props.form.rimVariation = !this.props.form.rimVariation
+                $('#rimVariation').text(`Rim Variation: ${this.props.form.rimVariation}`)
+              }}
+            > {`Rim Variation: ${this.props.form.rimVariation}`}
+            </button>
+            <button
+              className='btn btn-secondary'
+              type="button"
+              id="gasEvidence"
+              onClick={() => {
+                this.props.form.gasEvidence = !this.props.form.gasEvidence
+                $('#gasEvidence').text(`Gas Evidence: ${this.props.form.gasEvidence}`)
+              }}
+            > {`Gas Evidence: ${this.props.form.gasEvidence}`}
+            </button>
+          </div>
+        </div>
+        <div className="row">
+        <button
+          className='btn btn-primary'
+          type="button"
+          id="sightSubmit"
+          onClick={() => {
+
+          }}
+        >Submit Sight</button>
         </div>
         </form>
         {console.log(this.props)}
