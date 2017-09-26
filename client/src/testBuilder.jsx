@@ -36,7 +36,8 @@ class Test extends React.Component {
     //TODO: input validation
     if (this.state.type === 'red' || this.state.type === 'white') {
       axios.post('http://localhost:6161/test', this.state)
-        .then(res => this.link = `http:\/\/localhost:6161/test/${res.data._id}`)
+        // .then(res => this.link = `http:\/\/localhost:6161/test/${res.data._id}`)
+        .then(res => this.link =`./index.html?type=grid&id=${res.data._id}`)
         .then(() => this.setState(this.state));
       console.log(this.state);
       //`link: http:\/\/localhost:6161/test/${res.data._id}`
@@ -48,6 +49,9 @@ class Test extends React.Component {
   render() {
     return (
       <div className="container">
+        <div className="row">
+          <h2>Create a Test:</h2>
+        </div>
         <div className="row">
           <form>
             {this.stringInputs.map(field => (

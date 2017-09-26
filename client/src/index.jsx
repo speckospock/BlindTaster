@@ -3,6 +3,14 @@ import {render} from 'react-dom';
 import Test from './testBuilder.jsx';
 import Grid from './grid.jsx';
 
+const Route = (props) => {
+  if (props.type === 'grid') {
+    return <Grid id={props.id}/>
+  } else {
+    return <Test />
+  }
+}
+
 class App extends React.Component {
   componentWillMount() {
     if (window.location.href.split('?').length > 1) {
@@ -12,17 +20,19 @@ class App extends React.Component {
         stuff[things[0]] = things[1];
       });
       console.log("cccc", stuff);
+      this.setState(stuff);
     }
-    console.log("bbbb", window.location.href.split('?')[1].split('&'));
   }
   render() {
     return (
       <div className="container">
-        <Test />
-        <Grid id='59c9bee53ceca9092508a9ae' />
+        <Route type={this.state.type} />
       </div>
     );
   }
 }
+
+//<Test />
+// <Grid id='59c9bee53ceca9092508a9ae' />
 
 render(<App/>, document.getElementById('app'));
