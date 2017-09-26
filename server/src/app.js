@@ -21,7 +21,8 @@ app.get('/test', (req, res) => {
 app.use('/test', bodyParser);
 
 app.post('/test', (req, res) => {
-  console.log(req.body);
+  let newTest = new models.Test({name, producer, vintage, varietal, country, region} = req.body);
+  console.log(newTest);
 });
 
 app.get('/test/:testId', (req, res) => {
