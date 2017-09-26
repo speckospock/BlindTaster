@@ -7,6 +7,7 @@ class Grid extends React.Component {
     super(props);
     this.state = {
       name: null,
+      testId: props.id,
       sight: {
         clarity: 0,
         concentration: 0,
@@ -199,7 +200,17 @@ class Grid extends React.Component {
         clarity: ['clear', 'hazy', 'turbid'],
         concentration: ['pale', 'medium', 'deep'],
         staining: ['none', 'light', 'medium', 'heavy'],
-        tearing: ['light', 'medium', 'heavy']
+        tearing: ['light', 'medium', 'heavy'],
+      },
+      color: {
+        red: {
+          primary: ['red', 'garnet', 'ruby', 'purple'],
+          secondary: [...Object.keys(this.state.sight.color.secondary.red)]
+        },
+        white: {
+          primary: ['water white', 'straw', 'yellow', 'gold'],
+          secondary: [...Object.keys(this.state.sight.color.secondary.white)]
+        }
       }
     }
   }
@@ -209,25 +220,18 @@ class Grid extends React.Component {
         testId: response.data._id,
         type: response.data.type,
       }))
-      .then(() => this.mapOptions())
       .then(() => console.log("got the things ", this.state))
       .catch(() => console.log('Error getting data'));
   }
   mapOptions() {
-    if (this.state.type==='red') {
-      this.options.sight.color = {primary: ['red', 'garnet', 'ruby', 'purple']}
-      this.options.sight.color.secondary = [...Object.keys(this.state.sight.color.secondary.red)];
-    }
-    else {
-      this.options.sight.color = {primary: ['water white', 'straw', 'yellow', 'gold']}
-      this.options.sight.color.secondary = [...Object.keys(this.state.sight.color.secondary.white)];
-    }
+
   }
   render() {
     return (
       <div>
         <h2>HIHIHIHIHI</h2>
-        <Sight form={this.state.sight} options={this.options.sight} />
+        <Sight form={this.state.sight} options={this.options.sight}
+        color={this.options.color} id={this.state.testId} />
       </div>
     );
   }
