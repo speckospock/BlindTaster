@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Sight from './sight.jsx';
 
 class Grid extends React.Component {
   constructor(props) {
@@ -193,6 +194,14 @@ class Grid extends React.Component {
         age: 0 //1-3 years, 4-6 years, 7+ years
       }
     };
+    this.options = {
+      sight: {
+        clarity: ['clear', 'hazy', 'turbid'],
+        concentration: ['pale', 'medium', 'deep'],
+        staining: ['none', 'light', 'medium', 'heavy'],
+        tearing: ['light', 'medium', 'heavy']
+      }
+    }
   }
   componentWillMount() {
     axios.get(`http:\/\/localhost:6161/test/${this.props.id}`)
@@ -200,12 +209,26 @@ class Grid extends React.Component {
         testId: response.data._id,
         type: response.data.type,
       }))
+      .then(() => this.mapOptions())
       .then(() => console.log("got the things ", this.state))
       .catch(() => console.log('Error getting data'));
   }
+  mapOptions() {
+    if (this.state.type==='red') {
+      this.options.sight.color = {primary: ['red', 'garnet', 'ruby', 'purple']}
+      this.options.sight.color.secondary = [...Object.keys(this.state.sight.color.secondary.red)];
+    }
+    else {
+      this.options.sight.color = {primary: ['water white', 'straw', 'yellow', 'gold']}
+      this.options.sight.color.secondary = [...Object.keys(this.state.sight.color.secondary.white)];
+    }
+  }
   render() {
     return (
-      <h2>HIHIHIHIHI</h2>
+      <div>
+        <h2>HIHIHIHIHI</h2>
+        <Sight form={this.state.sight} options={this.options.sight} />
+      </div>
     );
   }
 }
