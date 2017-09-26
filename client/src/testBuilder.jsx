@@ -10,8 +10,10 @@ class Test extends React.Component {
       'vintage': null,
       'varietal': null,
       'country': null,
-      'region': null
+      'region': null,
+      'type': 'red',
     }
+    this.stringInputs = ['name', 'producer', 'vintage', 'varietal', 'country', 'region'];
   }
   handleChange(event) {
     let key = event.target.placeholder;
@@ -20,16 +22,31 @@ class Test extends React.Component {
     })
     // console.log(this.state);
   }
+  changeType() {
+    if (this.state.type==='red') {
+      this.setState({ type: 'white' });
+    } else {
+      this.setState({ type: 'red' });
+    }
+
+    console.log(this.state)
+  }
   submit() {
-    axios.post('http://localhost:6161/test', this.state);
-    console.log(this.state);
+    //TODO: input validation
+    if (this.state.type === 'red' || this.state.type === 'white') {
+      axios.post('http://localhost:6161/test', this.state);
+      console.log(this.state);
+    } else {
+      console.log('Type field is REQUIRED');
+    }
+
   }
   render() {
     return (
       <div className="container">
         <div className="row">
           <form>
-            {Object.keys(this.state).map(field => (
+            {this.stringInputs.map(field => (
               <input
                 type="text"
                 className="form-control"
@@ -38,6 +55,12 @@ class Test extends React.Component {
                 onChange={this.handleChange.bind(this)}>
               </input>
             ))}
+            <span>Grid Type (toggle):</span>
+            <button
+              type="button"
+              className="btn btn-light"
+              onClick={this.changeType.bind(this)}
+            >{this.state.type}</button>
           </form>
         </div>
         <div className="row">

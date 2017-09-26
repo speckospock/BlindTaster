@@ -1,18 +1,8 @@
 const mongoose = require('mongoose');
 
-const testSchema = mongoose.Schema({
-  producer: String,
-  name: String,
-  vintage: String,
-  varietal: String,
-  country: String,
-  region: String,
-  oldWorld: Boolean,
-  blind: Boolean
-});
-
 const gridSchema = mongoose.Schema({
   name: {type: String, required: true},
+  type: {type: String, required: true}, //red or white
   sight: {
     clarity: {type: Number, min: 0, max: 2}, //1-3 clear, hazy, tubid
     concentration: {type: Number, min: 0, max: 2}, //1-3 pale, medium, deep
@@ -200,6 +190,19 @@ const gridSchema = mongoose.Schema({
     country: String,
     age: {type: Number, min: 0, max: 2} //1-3 years, 4-6 years, 7+ years
   }
+});
+
+const testSchema = mongoose.Schema({
+  producer: String,
+  name: String,
+  vintage: String,
+  varietal: String,
+  country: String,
+  region: String,
+  oldWorld: Boolean,
+  blind: Boolean,
+  type: { type: String, required: true },
+  responses: [gridSchema]
 });
 
 module.exports.testSchema = testSchema;
