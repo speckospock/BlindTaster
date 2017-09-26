@@ -17,10 +17,11 @@ class Sight extends React.Component {
       .then(res => {
         console.log("RES", res);
         this.setState({
+          type: res.data.type,
           color: this.props.color[res.data.type]
         });
       }).then(() => console.log("hihihi", this.state))
-      .catch(() => this.componentWillMount());
+      .catch(() => console.log(error));
   }
   render() {
     return (
@@ -65,8 +66,19 @@ class Sight extends React.Component {
                       className='dropdown-item'
                       type="button"
                       onClick={() => {
-                        this.props.form[option] = i;
-                        $(`#dropdown${option}`).text(`${option}: ${el}`);
+                        if (option === 'primary') {
+                          this.props.form.color.primary = i;
+                          console.log(this.props.form);
+                          $(`#dropdown${option}`).text(`primary: ${el}`);
+                        } else if (option === 'secondary') {
+                          this.props.form.color.secondary[this.state.type][el] = !this.props.form.color.secondary[this.state.type][el];
+                          console.log(this.props.form.color.secondary[this.state.type])
+                          let selected = Object.keys(this.props.form.color.secondary[this.state.type])
+                            .filter(item => !!this.props.form.color.secondary[this.state.type][item])
+                            .join(', ');
+                          $(`#dropdown${option}`).text(`secondary: ${selected}`);
+                          console.log(this.props.form.color);
+                        }
                       }}>{el}</button>;
                   })}
                 </div>
