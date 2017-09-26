@@ -24,8 +24,8 @@ app.post('/test', (req, res) => {
   let newTest = new models.Test({name, producer, vintage, varietal, country, region, type} = req.body);
 
   console.log(newTest);
-  // newTest.save().then(res.send(newTest));
-  res.send(newTest);
+  newTest.save().then(res.send(newTest));
+  // res.send(newTest);
 });
 
 app.use('/test/:testId', bodyParser)
@@ -39,8 +39,11 @@ app.get('/test/:testId', (req, res) => {
 
 app.post('/test/:testId', (req, res) => {
   let newGrid = new models.Grid(req.body);
-  console.log(newGrid);
+  // console.log(newGrid);
+  newGrid.save().then(res.send(newGrid));
 })
+
+// app.get('/test/:testId/results')
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

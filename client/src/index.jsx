@@ -26,7 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Route type={this.state.type} />
+        <Route type={this.state.type} id={this.state.id}/>
       </div>
     );
   }

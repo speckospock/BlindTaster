@@ -13,18 +13,29 @@ class Sight extends React.Component {
     };
   }
   componentWillMount() {
-    axios.get(`http:\/\/localhost:6161/test/${this.props.id}`)
-      .then(res => {
-        console.log("RES", res);
-        this.setState({
-          type: res.data.type,
-          color: this.props.color[res.data.type]
-        });
-      }).then(() => console.log("hihihi", this.state))
-      .catch(() => console.log(error));
+    // axios.get(`http:\/\/localhost:6161/test/${this.props.id}`)
+    //   .then(res => {
+    //     console.log("RES", res);
+    //     this.setState({
+    //       type: res.data.type,
+    //       color: this.props.color[res.data.type]
+    //     });
+    //   }).then(() => console.log("hihihi", this.state))
+    //   .catch(() => console.log(error));
+    this.setType();
   }
   updateForm() {
     this.props.update(this.props.form);
+  }
+  setType() {
+    let wineType = this.props.type();
+    if (wineType) {
+      this.setState({type: wineType, color: this.props.color[wineType]});
+      console.log("TYPE: ", this.state.type);
+    } else {
+      setTimeout(this.setType.bind(this), 500);
+      console.log("GAH");
+    }
   }
   render() {
     return (
@@ -113,7 +124,7 @@ class Sight extends React.Component {
             > {`Gas Evidence: ${this.props.form.gasEvidence}`}
             </button>
           </div>
-        </div>  
+        </div>
         </form>
       </div>
     </div>

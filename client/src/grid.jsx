@@ -296,6 +296,7 @@ class Grid extends React.Component {
           options={this.options.sight}
           color={this.options.color}
           id={this.state.testId}
+          type={this.getType.bind(this)}
           update={this.updateForm.bind(this, 'sight')}
         />
         <Nose
