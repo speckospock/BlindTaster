@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class Test extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Test extends React.Component {
     // console.log(this.state);
   }
   submit() {
+    axios.post('http://localhost:6161/test', this.state);
     console.log(this.state);
   }
   render() {

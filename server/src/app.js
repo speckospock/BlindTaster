@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser').json();
+const cors = require('cors');
 const models = require('./db.js');
 
 const app = express();
 const port = 6161;
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   console.log('request on /')
