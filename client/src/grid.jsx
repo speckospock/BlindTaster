@@ -244,13 +244,16 @@ class Grid extends React.Component {
   mapOptions() {
 
   }
+  getType() {
+    return this.state.type;
+  }
   render() {
     return (
       <div>
         <h2>HIHIHIHIHI</h2>
         <Sight form={this.state.sight} options={this.options.sight}
         color={this.options.color} id={this.state.testId} />
-        <Nose form={this.state.nose} options={this.options.nose} />
+        <Nose form={this.state.nose} options={this.options.nose} type={this.getType.bind(this)}/>
       </div>
     );
   }

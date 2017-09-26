@@ -9,14 +9,27 @@ class Nose extends React.Component {
     };
   }
   componentWillMount() {
-    axios.get(`http:\/\/localhost:6161/test/${this.props.id}`)
-      .then(res => {
-        console.log("RES", res);
-        this.setState({
-          type: res.data.type,
-        });
-      }).then(() => console.log("hihihi", this.state))
-      .catch(() => console.log(error));
+    // axios.get(`http:\/\/localhost:6161/test/${this.props.id}`)
+    //   .then(res => {
+    //     console.log("RES", res);
+    //     this.setState({
+    //       type: res.data.type,
+    //     });
+    //   }).then(() => console.log("hihihi", this.state))
+    //   .catch(() => console.log("an error"));
+    // this.setState({type: this.props.type()});
+  }
+  componentDidMount() {
+    // this.setState({type: this.props.type()});
+    this.setType();
+  }
+  setType() {
+    let wineType = this.props.type();
+    if (wineType) {
+      this.setState({type: wineType});
+    } else {
+      setTimeout(this.setType.bind(this), 500);
+    }
   }
   render() {
     return(
@@ -73,7 +86,27 @@ class Nose extends React.Component {
 
         </div>
         <div className="row">
-
+        <div className="dropdown">
+          <button className="btn btn-secondary dropdown-toggle" type="button" id={`fruit`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {`fruit:`}
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {Object.keys(this.props.form.fruit[this.state.type]).map(el => (
+              <button
+                className='dropdown-item'
+                type="button"
+                onClick={() => {
+                  this.props.form.fruit[this.state.type][el] = !this.props.form.fruit[this.state.type][el];
+                  console.log(this.props.form.fruit)
+                  let selected = Object.keys(this.props.form.fruit[this.state.type])
+                    .filter(item => !!this.props.form.fruit[this.state.type][item])
+                    .join(', ');
+                  $(`#fruit`).text(`fruit: ${selected}`);
+                }}
+              >{el}</button>
+            ))}
+          </div>
+        </div>
         </div>
       </div>
     )
