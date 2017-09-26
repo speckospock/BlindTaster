@@ -21,10 +21,10 @@ app.get('/test', (req, res) => {
 app.use('/test', bodyParser);
 
 app.post('/test', (req, res) => {
-  let newTest = new models.Test({name, producer, vintage, varietal, country, region} = req.body);
+  let newTest = new models.Test({name, producer, vintage, varietal, country, region, type} = req.body);
 
-  // newTest.save().then(res.send(newTest));
   console.log(newTest);
+  // newTest.save().then(res.send(newTest));
   res.send(newTest);
 });
 
