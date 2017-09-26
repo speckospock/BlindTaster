@@ -247,13 +247,28 @@ class Grid extends React.Component {
   getType() {
     return this.state.type;
   }
+  updateForm(category, data) {
+    this.setState({
+      [category]: data
+    });
+  }
   render() {
     return (
       <div>
         <h2>HIHIHIHIHI</h2>
-        <Sight form={this.state.sight} options={this.options.sight}
-        color={this.options.color} id={this.state.testId} />
-        <Nose form={this.state.nose} options={this.options.nose} type={this.getType.bind(this)}/>
+        <Sight
+          form={this.state.sight}
+          options={this.options.sight}
+          color={this.options.color}
+          id={this.state.testId}
+          update={this.updateForm.bind(this, 'sight')}
+        />
+        <Nose
+          form={this.state.nose}
+          options={this.options.nose}
+          type={this.getType.bind(this)}
+          update={this.updateForm.bind(this, 'nose')}
+        />
       </div>
     );
   }

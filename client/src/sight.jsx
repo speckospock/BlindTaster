@@ -23,6 +23,9 @@ class Sight extends React.Component {
       }).then(() => console.log("hihihi", this.state))
       .catch(() => console.log(error));
   }
+  updateForm() {
+    this.props.update(this.props.form);
+  }
   render() {
     return (
     <div className="container">
@@ -43,6 +46,7 @@ class Sight extends React.Component {
                     type="button"
                     onClick={() => {
                       this.props.form[option] = i;
+                      this.updateForm();
                       $(`#dropdown${option}`).text(`${option}: ${el}`);
                     }}>{el}</button>;
                 })}
@@ -66,10 +70,12 @@ class Sight extends React.Component {
                       if (option === 'primary') {
                         this.props.form.color.primary = i;
                         console.log(this.props.form);
+                        this.updateForm();
                         $(`#dropdown${option}`).text(`primary: ${el}`);
                       } else if (option === 'secondary') {
                         this.props.form.color.secondary[this.state.type][el] = !this.props.form.color.secondary[this.state.type][el];
-                        console.log(this.props.form.color.secondary[this.state.type])
+                        console.log(this.props.form.color.secondary[this.state.type]);
+                        this.updateForm();
                         let selected = Object.keys(this.props.form.color.secondary[this.state.type])
                           .filter(item => !!this.props.form.color.secondary[this.state.type][item])
                           .join(', ');
@@ -89,7 +95,8 @@ class Sight extends React.Component {
               type="button"
               id="rimVariation"
               onClick={() => {
-                this.props.form.rimVariation = !this.props.form.rimVariation
+                this.props.form.rimVariation = !this.props.form.rimVariation;
+                this.updateForm();
                 $('#rimVariation').text(`Rim Variation: ${this.props.form.rimVariation}`)
               }}
             > {`Rim Variation: ${this.props.form.rimVariation}`}
@@ -99,25 +106,15 @@ class Sight extends React.Component {
               type="button"
               id="gasEvidence"
               onClick={() => {
-                this.props.form.gasEvidence = !this.props.form.gasEvidence
+                this.props.form.gasEvidence = !this.props.form.gasEvidence;
+                this.updateForm();
                 $('#gasEvidence').text(`Gas Evidence: ${this.props.form.gasEvidence}`)
               }}
             > {`Gas Evidence: ${this.props.form.gasEvidence}`}
             </button>
           </div>
-        </div>
-        <div className="row">
-          <button
-            className='btn btn-primary'
-            type="button"
-            id="sightSubmit"
-            onClick={() => {
-
-            }}
-          >Submit Sight</button>
-        </div>
+        </div>  
         </form>
-        {console.log(this.props)}
       </div>
     </div>
   );

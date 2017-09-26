@@ -31,6 +31,9 @@ class Nose extends React.Component {
       setTimeout(this.setType.bind(this), 500);
     }
   }
+  updateForm() {
+    this.props.update(this.props.form);
+  }
   render() {
     return(
       <div className="container">
@@ -50,6 +53,7 @@ class Nose extends React.Component {
                   onClick={() => {
                     this.props.form[option] = i;
                     console.log(this.props.form);
+                    this.updateForm();
                     $(`#dropdown${option}`).text(`${option}: ${el}`);
                   }}>{el}</button>;
               })}
@@ -73,6 +77,7 @@ class Nose extends React.Component {
                     onClick={() => {
                       this.props.form[option][el] = !this.props.form[option][el];
                       console.log(this.props.form[option])
+                      this.updateForm();
                       let selected = Object.keys(this.props.form[option])
                         .filter(item => !!this.props.form[option][item])
                         .join(', ');
@@ -97,7 +102,8 @@ class Nose extends React.Component {
                   type="button"
                   onClick={() => {
                     this.props.form.fruit[this.state.type][el] = !this.props.form.fruit[this.state.type][el];
-                    console.log(this.props.form.fruit)
+                    console.log(this.props.form.fruit);
+                    this.updateForm();
                     let selected = Object.keys(this.props.form.fruit[this.state.type])
                       .filter(item => !!this.props.form.fruit[this.state.type][item])
                       .join(', ');
@@ -118,7 +124,8 @@ class Nose extends React.Component {
                   type="button"
                   onClick={() => {
                     this.props.form.nonFruit[this.state.type][el] = !this.props.form.nonFruit[this.state.type][el];
-                    console.log(this.props.form.nonFruit)
+                    console.log(this.props.form.nonFruit);
+                    this.updateForm();
                     let selected = Object.keys(this.props.form.nonFruit[this.state.type])
                       .filter(item => !!this.props.form.nonFruit[this.state.type][item])
                       .join(', ');
