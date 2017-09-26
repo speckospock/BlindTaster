@@ -107,14 +107,14 @@ class Sight extends React.Component {
           </div>
         </div>
         <div className="row">
-        <button
-          className='btn btn-primary'
-          type="button"
-          id="sightSubmit"
-          onClick={() => {
+          <button
+            className='btn btn-primary'
+            type="button"
+            id="sightSubmit"
+            onClick={() => {
 
-          }}
-        >Submit Sight</button>
+            }}
+          >Submit Sight</button>
         </div>
         </form>
         {console.log(this.props)}

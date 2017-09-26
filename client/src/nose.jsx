@@ -86,27 +86,48 @@ class Nose extends React.Component {
 
         </div>
         <div className="row">
-        <div className="dropdown">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id={`fruit`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {`fruit:`}
-          </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {Object.keys(this.props.form.fruit[this.state.type]).map(el => (
-              <button
-                className='dropdown-item'
-                type="button"
-                onClick={() => {
-                  this.props.form.fruit[this.state.type][el] = !this.props.form.fruit[this.state.type][el];
-                  console.log(this.props.form.fruit)
-                  let selected = Object.keys(this.props.form.fruit[this.state.type])
-                    .filter(item => !!this.props.form.fruit[this.state.type][item])
-                    .join(', ');
-                  $(`#fruit`).text(`fruit: ${selected}`);
-                }}
-              >{el}</button>
-            ))}
+          <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id={`fruit`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {`fruit:`}
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {Object.keys(this.props.form.fruit[this.state.type]).map(el => (
+                <button
+                  className='dropdown-item'
+                  type="button"
+                  onClick={() => {
+                    this.props.form.fruit[this.state.type][el] = !this.props.form.fruit[this.state.type][el];
+                    console.log(this.props.form.fruit)
+                    let selected = Object.keys(this.props.form.fruit[this.state.type])
+                      .filter(item => !!this.props.form.fruit[this.state.type][item])
+                      .join(', ');
+                    $(`#fruit`).text(`fruit: ${selected}`);
+                  }}
+                >{el}</button>
+              ))}
+            </div>
           </div>
-        </div>
+          <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id={`nonFruit`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {`nonFruit:`}
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {Object.keys(this.props.form.nonFruit[this.state.type]).map(el => (
+                <button
+                  className='dropdown-item'
+                  type="button"
+                  onClick={() => {
+                    this.props.form.nonFruit[this.state.type][el] = !this.props.form.nonFruit[this.state.type][el];
+                    console.log(this.props.form.nonFruit)
+                    let selected = Object.keys(this.props.form.nonFruit[this.state.type])
+                      .filter(item => !!this.props.form.nonFruit[this.state.type][item])
+                      .join(', ');
+                    $(`#nonFruit`).text(`nonFruit: ${selected}`);
+                  }}
+                >{el}</button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     )
