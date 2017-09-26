@@ -270,10 +270,26 @@ class Grid extends React.Component {
       [category]: data
     });
   }
+  post() {
+
+  }
+  handleChange(event) {
+    this.setState({
+      name: event.target.value
+    });
+    console.log("NAME:", this.state.name);
+  }
   render() {
     return (
       <div>
-        <h2>HIHIHIHIHI</h2>
+        <h2>Blind Taste Test:</h2>
+        <input
+          type="text"
+          className="form-control"
+          placeholder='Your Name'
+          value={this.state.name}
+          onChange={this.handleChange.bind(this)}>
+        </input>
         <Sight
           form={this.state.sight}
           options={this.options.sight}
