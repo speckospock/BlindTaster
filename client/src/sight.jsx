@@ -6,15 +6,24 @@ let Sight = (props) => (
     <div className="row">
       <form>
       {Object.keys(props.options).map(option => (
-        <div className="dropdown">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {option}
-          </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {props.options[option].map(el => {
-              console.log(el);
-              return <button className='dropdown-item' type="button">{el}</button>;
-            })}
+        <div className="col">
+          <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id={`dropdown${option}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {option}
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {props.options[option].map((el, i) => {
+                console.log(el);
+                return <button
+                  className='dropdown-item'
+                  type="button"
+                  onClick={() => {
+                    props.form[option] = i;
+                    $(`#dropdown${option}`).text(`${option}: ${el}`);
+                    console.log(props.form);
+                  }}>{el}</button>;
+              })}
+            </div>
           </div>
         </div>
       ))}
