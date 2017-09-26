@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Sight from './sight.jsx';
 import Nose from './nose.jsx';
+import Palate from './palate.jsx';
 
 /*
 onClick={() => {
@@ -229,6 +230,18 @@ class Grid extends React.Component {
       nose: {
         intensity: ['delicate', 'moderate', 'powerful'],
         age: ['youthful', 'developing', 'vinous']
+      },
+      palate: {
+        sweetness: ['bone dry', 'dry', 'off-dry', 'medium sweet', 'sweet', 'very sweet'],
+      },
+      structure: {
+        tannin: ['low', 'medium-', 'medium', 'medium+', 'high'],
+        acid: ['low', 'medium-', 'medium', 'medium+', 'high'],
+        alcohol: ['low', 'medium-', 'medium', 'medium+', 'high'],
+        finish: ['low', 'medium-', 'medium', 'medium+', 'high'],
+        complexity: ['low', 'medium-', 'medium', 'medium+', 'high'],
+        body: ['light', 'medium', 'full'],
+        texture: ['creamy', 'round', 'lean'],
       }
     }
   }
@@ -268,6 +281,13 @@ class Grid extends React.Component {
           options={this.options.nose}
           type={this.getType.bind(this)}
           update={this.updateForm.bind(this, 'nose')}
+        />
+        <Palate
+          form={this.state.palate}
+          options={this.options.palate}
+          structure={this.options.structure}
+          type={this.getType.bind(this)}
+          update={this.updateForm.bind(this, 'palate')}
         />
       </div>
     );
