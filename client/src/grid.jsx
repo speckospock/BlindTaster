@@ -3,6 +3,7 @@ import axios from 'axios';
 import Sight from './sight.jsx';
 import Nose from './nose.jsx';
 import Palate from './palate.jsx';
+import Conclusion from './conclusion.jsx';
 
 /*
 onClick={() => {
@@ -242,6 +243,10 @@ class Grid extends React.Component {
         complexity: ['low', 'medium-', 'medium', 'medium+', 'high'],
         body: ['light', 'medium', 'full'],
         texture: ['creamy', 'round', 'lean'],
+      },
+      conclusion: {
+        climate: ['cool', 'moderate', 'warm'],
+        age: ['1-3 years', '4-6 years', '7+ years']
       }
     }
   }
@@ -288,6 +293,11 @@ class Grid extends React.Component {
           structure={this.options.structure}
           type={this.getType.bind(this)}
           update={this.updateForm.bind(this, 'palate')}
+        />
+        <Conclusion
+          form={this.state.conclusion}
+          options={this.options.conclusion}
+          update={this.updateForm.bind(this, 'conclusion')}
         />
       </div>
     );
