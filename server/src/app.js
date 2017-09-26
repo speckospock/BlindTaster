@@ -28,7 +28,7 @@ app.post('/test', (req, res) => {
   // res.send(newTest);
 });
 
-app.use('/test/:testId', bodyParser)
+app.use('/test/:testId', bodyParser);
 
 app.get('/test/:testId', (req, res) => {
   models.Test.findOne({_id: req.params.testId})
@@ -39,11 +39,19 @@ app.get('/test/:testId', (req, res) => {
 
 app.post('/test/:testId', (req, res) => {
   let newGrid = new models.Grid(req.body);
-  // console.log(newGrid);
+  console.log(req.body.testId);
+  newGrid.testId = req.body.testId;
+  console.log(newGrid.testId);
   newGrid.save().then(res.send(newGrid));
 })
 
-// app.get('/test/:testId/results')
+app.use('/test/:testId/results', bodyParser);
+
+app.get('/test/:testId/results', (req, res) => {
+  models.Grid.find({testId: req.params.testId})
+    .then((data) => res.send(data))
+    .catch((err) => res.send('couldn\'t find results'));
+})
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

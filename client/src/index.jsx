@@ -12,6 +12,13 @@ const Route = (props) => {
 }
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state= {
+      type: '',
+      id: ''
+    }
+  }
   componentWillMount() {
     if (window.location.href.split('?').length > 1) {
       let stuff = {}
@@ -26,7 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Route type={this.state.type} id={this.state.id}/>
+        <Route type={this.state.type} id={this.state.id || ''}/>
       </div>
     );
   }
