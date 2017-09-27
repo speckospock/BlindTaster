@@ -4,8 +4,11 @@ class Palate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: 'red'
+      type: 'red',
     };
+  }
+  componentWillMount() {
+    this.setType();
   }
   setType() {
     let wineType = this.props.type();
@@ -67,7 +70,7 @@ class Palate extends React.Component {
         </div>
         <div className="row">
         {Object.keys(this.props.form)
-          .filter(key => key !== 'sweetness' && key !== 'fruit' && key !== 'nonFruit')
+          .filter(key => key !== 'sweetness' && key !== 'fruit' && key !== 'nonFruit' && key !== 'structure')
           .map(option => (
             <div className="dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" id={`${option}Palate`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
