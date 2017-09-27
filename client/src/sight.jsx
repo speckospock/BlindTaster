@@ -13,15 +13,6 @@ class Sight extends React.Component {
     };
   }
   componentWillMount() {
-    // axios.get(`http:\/\/localhost:6161/test/${this.props.id}`)
-    //   .then(res => {
-    //     console.log("RES", res);
-    //     this.setState({
-    //       type: res.data.type,
-    //       color: this.props.color[res.data.type]
-    //     });
-    //   }).then(() => console.log("hihihi", this.state))
-    //   .catch(() => console.log(error));
     this.setType();
   }
   updateForm() {
@@ -100,30 +91,28 @@ class Sight extends React.Component {
           ))}
         </div>
         <div className="row">
-          <div className="col">
-            <button
-              className='btn btn-secondary'
-              type="button"
-              id="rimVariation"
-              onClick={() => {
-                this.props.form.rimVariation = !this.props.form.rimVariation;
-                this.updateForm();
-                $('#rimVariation').text(`Rim Variation: ${this.props.form.rimVariation}`)
-              }}
-            > {`Rim Variation: ${this.props.form.rimVariation}`}
-            </button>
-            <button
-              className='btn btn-secondary'
-              type="button"
-              id="gasEvidence"
-              onClick={() => {
-                this.props.form.gasEvidence = !this.props.form.gasEvidence;
-                this.updateForm();
-                $('#gasEvidence').text(`Gas Evidence: ${this.props.form.gasEvidence}`)
-              }}
-            > {`Gas Evidence: ${this.props.form.gasEvidence}`}
-            </button>
-          </div>
+          <button
+            className='btn btn-secondary'
+            type="button"
+            id="rimVariation"
+            onClick={() => {
+              this.props.form.rimVariation = !this.props.form.rimVariation;
+              this.updateForm();
+              $('#rimVariation').text(`Rim Variation: ${this.props.form.rimVariation}`)
+            }}
+          > {`Rim Variation: ${this.props.form.rimVariation}`}
+          </button>
+          <button
+            className='btn btn-secondary'
+            type="button"
+            id="gasEvidence"
+            onClick={() => {
+              this.props.form.gasEvidence = !this.props.form.gasEvidence;
+              this.updateForm();
+              $('#gasEvidence').text(`Gas Evidence: ${this.props.form.gasEvidence}`)
+            }}
+          > {`Gas Evidence: ${this.props.form.gasEvidence}`}
+          </button>
         </div>
         </form>
       </div>
