@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const gridSchema = mongoose.Schema({
   name: {type: String, required: true},
-  testId: Number,
+  testId: String,
   type: {type: String, required: true}, //red or white
   sight: {
     clarity: {type: Number, min: 0, max: 2}, //1-3 clear, hazy, tubid

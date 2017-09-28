@@ -22,6 +22,17 @@ class Palate extends React.Component {
     this.props.update(this.props.form);
   }
   render() {
+    let button = (this.state.type === 'white') ? (<button
+      className='btn btn-secondary'
+      type="button"
+      id="phenolic"
+      onClick={() => {
+        this.props.form.structure.phenolic = !this.props.form.structure.phenolic;
+        this.updateForm();
+        $('#phenolic').text(`Phenolics: ${this.props.form.structure.phenolic}`)
+      }}
+    > {`Phenolics: false`}
+    </button>) : <div></div>;
     return(
       <div className="container">
         <h3>Palate:</h3>
@@ -69,8 +80,9 @@ class Palate extends React.Component {
         ))}
         </div>
         <div className="row">
+        {button}
         {Object.keys(this.props.form)
-          .filter(key => key !== 'sweetness' && key !== 'fruit' && key !== 'nonFruit' && key !== 'structure')
+          .filter(key => key !== 'sweetness' && key !== 'fruit' && key !== 'nonFruit' && key !== 'structure' )
           .map(option => (
             <div className="dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" id={`${option}Palate`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
