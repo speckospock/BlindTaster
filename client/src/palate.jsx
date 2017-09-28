@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class Palate extends React.Component {
   constructor(props) {
     super(props);
