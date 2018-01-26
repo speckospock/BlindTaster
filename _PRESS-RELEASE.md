@@ -18,12 +18,10 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Heading ##
   Blind Taster
-  > Name the product in a way the reader (i.e. your target customers) will understand.
 
 
 ## Sub-Heading ##
   For servers, sommeliers, and wine enthusiasts
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
 ## Summary ##
   Blind Taster allows servers, sommeliers, and wine enthusiasts to develop their palates together.
@@ -32,13 +30,11 @@ Once the project moves into development, the press release can be used as a touc
   for the manager to send out, where participants can record their tasting notes within the time defined.
   At the end of time, the results will be collected and displayed, so that the everybody can discuss the wine,
   and managers can track the palate development of their servers.
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
 ## Problem ##
   When developing one's wine palate, blind tasting is essential. Passing the Sommelier exams require one to master
   the skill, and often results are recorded on paper or on self-created spreadsheets/docs. There's no easy way
   to run analytics on problem areas, check one's results against one's peers, or track one's progress.
-  > Describe the problem your product solves.
 
 ## Solution ##
   Blind Taster allows managers, servers, sommeliers, and wine enthusiasts to develop their palates in a
@@ -46,23 +42,17 @@ Once the project moves into development, the press release can be used as a touc
   participants. The manager can track servers and sommeliers' progress, to help shape their development
   program. Participants can sign in and record their results, so that they can track their palate development
   and centralize their wine tasting journal.
-  > Describe how your product elegantly solves the problem.
 
 ## Quote from You ##
   "Blind Taster takes the guesswork out of passing your Sommelier exams and lets managers create tailored palate
   development plans for their servers and sommeliers"
-  > A quote from a spokesperson in your company.
 
 ## How to Get Started ##
-  Head to the Blind Taster site and click "Create Test" to get started! To save and track results, sign in with
-  Google.
-  > Describe how easy it is to get started.
+  Head to the Blind Taster site and click "Create Test" to get started!
 
 ## Customer Quote ##
   "Blind Taster helped me prepare myself for the Advanced Sommelier test. I passed the test, got a raise,
   and had a ton of fun doing it!"
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
 ## Closing and Call to Action ##
   Go to the Blind Taster site and start tasting!
-  > Wrap it up and give pointers where the reader should go next.
