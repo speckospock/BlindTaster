@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/speckospock/hrsf82-mvp#readme",
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.15.5",
